@@ -46,7 +46,8 @@ describe('Thermostat', function(){
   describe('powersaving mode', function() {
     it('has a max temp of 25', function() {
       thermostat.powersave('on');
-      for (let i = 0; i < 5; i++) {
+      for (let i = 0; i <= 25; i++) {
+        console.log(i)
         thermostat.up();
       }
       expect(function() { thermostat.up() } ).toThrow("Maximum powersave temperature reached.");
@@ -56,12 +57,19 @@ describe('Thermostat', function(){
 
   describe('maximum temperature', function(){
     it ('has a max temp of 32', function(){
-      for (let i = 0; i < 12; i++) {
+      for (let i = 0; i <= 31; i++) {
         thermostat.up() 
       }
       expect(function() {thermostat.up() } ).toThrow("Maximum temperature reached.");
-      expect(thermostat.temperature).toEqual(32)
+      expect(thermostat.temperature).toEqual(31)
     })
+  })
+
+  describe('default on', function(){
+    it ('has powersave mode defaulted to on', function(){
+      expect(thermostat.powersavemode).toEqual(true)
+    })
+    
   })
 
 });

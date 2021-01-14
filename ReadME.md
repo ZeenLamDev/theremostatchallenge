@@ -28,6 +28,10 @@ As a user
 So that I don't overheat
 I want the maximum temperature to be 32
 
+As a user
+So that I usually save money
+I want the thermostat to default to power saving mode on
+
 Class     |    Properties  |  Methods
 -|-|-|
-Thermostat | powersave, temperature, min, max | set_temperature, up, down
+Thermostat | powersave, temperature, max, min| set_temperature, up, down,

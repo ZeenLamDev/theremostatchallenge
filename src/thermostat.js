@@ -5,7 +5,7 @@ class Thermostat {
     this.min = 10;
     this.max = 32;
     this.powersavemax = 25;
-    // this.powersavemode = false;
+    this.powersavemode = true;
   }
 
   up() {
