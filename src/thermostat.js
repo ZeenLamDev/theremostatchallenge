@@ -6,6 +6,7 @@ class Thermostat {
     this.max = 32;
     this.powersavemax = 25;
     this.powersavemode = true;
+    this.default = 20;
   }
 
   up() {
@@ -31,6 +32,10 @@ class Thermostat {
 
   powersaveOff() {
     this.powersavemode = false;
+  }
+
+  reset() {
+    this.temperature = this.default;
   }
 
 }

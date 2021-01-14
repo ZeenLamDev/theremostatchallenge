@@ -71,9 +71,28 @@ describe('Thermostat', function(){
 
   describe('rest temperature', function() {
     it ('resets the temperature to 20', function() {
+      thermostat.temperature = 21
       thermostat.reset()
       expect(thermostat.temperature).toEqual(20)
     })
   })
 
+  describe('energy usage', function(){
+    it('shows <18 as low-usage', function (){
+      thermostat.temperature < 18
+      thermostat.usage()
+      expect(thermostat.usage).toEqual("low-usage")
+    })
+    it('shows <=25 as medium-usage', function (){
+      thermostat.temperature > 18
+      thermostat.temperature <= 25
+      thermostat.usage()
+      expect(thermostat.usage).toEqual("medium-usage")
+    })
+    it('shows > 25 as high-usage', function (){
+      thermostat.temperature > 25
+      thermostat.usage()
+      expect(thermostat.usage).toEqual("high-usage")
+    })
+  })
 });
