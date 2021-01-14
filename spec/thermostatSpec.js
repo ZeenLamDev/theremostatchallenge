@@ -79,20 +79,21 @@ describe('Thermostat', function(){
 
   describe('energy usage', function(){
     it('shows <18 as low-usage', function (){
-      thermostat.temperature < 18
+      thermostat.temperature = 17
       thermostat.usage()
-      expect(thermostat.usage).toEqual("low-usage")
+      expect(thermostat.usage()).toEqual("low-usage")
     })
-    it('shows <=25 as medium-usage', function (){
-      thermostat.temperature > 18
-      thermostat.temperature <= 25
-      thermostat.usage()
-      expect(thermostat.usage).toEqual("medium-usage")
-    })
+
+    it('it is considered medium-usage', function() {
+      expect(thermostat.usage()).toEqual('medium-usage');
+    });
+
     it('shows > 25 as high-usage', function (){
-      thermostat.temperature > 25
-      thermostat.usage()
-      expect(thermostat.usage).toEqual("high-usage")
+      thermostat.powersaveOff()
+      for (var i = 0; i < 6; i++) {
+        thermostat.up();
+      }
+      expect(thermostat.usage()).toEqual("high-usage")
     })
   })
 });
