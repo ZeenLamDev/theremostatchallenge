@@ -25,10 +25,12 @@ class Thermostat {
     -- this.temperature
   }
 
-  powersave(instruction) {
-    if (instruction === 'on') {
+  powersave() {
       this.powersavemode = true;
-    }
+  }
+
+  powersaveOff() {
+    this.powersavemode = false;
   }
 
 }

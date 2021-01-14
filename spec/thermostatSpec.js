@@ -17,6 +17,11 @@ describe('Thermostat', function(){
       thermostat.up();
       expect(thermostat.temperature).toEqual(21)
     });
+
+    it('throws error if trying to exceed max temperature', function() {
+      thermostat.temperature = thermostat.max
+      expect(function() { thermostat.up() } ).toThrow("Maximum temperature reached.");
+    })
   });
 
   describe('down function', function(){
@@ -38,30 +43,22 @@ describe('Thermostat', function(){
 
   describe('has a power saving mode', function() {
     it('is a power saving mode with', function(){
-      thermostat.powersave('on');
+      thermostat.powersave();
       expect(thermostat.powersavemode).toBe(true);
     })
   })
 
   describe('powersaving mode', function() {
     it('has a max temp of 25', function() {
-      thermostat.powersave('on');
-      for (let i = 0; i <= 25; i++) {
-        console.log(i)
-        thermostat.up();
-      }
-      expect(function() { thermostat.up() } ).toThrow("Maximum powersave temperature reached.");
-      expect(thermostat.temperature).toEqual(25)
+      thermostat.powersave();
+      expect(thermostat.powersavemax).toEqual(25)
     });
   });
 
   describe('maximum temperature', function(){
     it ('has a max temp of 32', function(){
-      for (let i = 0; i <= 31; i++) {
-        thermostat.up() 
-      }
-      expect(function() {thermostat.up() } ).toThrow("Maximum temperature reached.");
-      expect(thermostat.temperature).toEqual(31)
+      thermostat.powersaveOff()
+      expect(thermostat.max).toEqual(32)
     })
   })
 
@@ -70,6 +67,13 @@ describe('Thermostat', function(){
       expect(thermostat.powersavemode).toEqual(true)
     })
     
+  })
+
+  describe('rest temperature', function() {
+    it ('resets the temperature to 20', function() {
+      thermostat.reset()
+      expect(thermostat.temperature).toEqual(20)
+    })
   })
 
 });
