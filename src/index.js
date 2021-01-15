@@ -42,7 +42,7 @@ $('#city').on('click', function(event) {
   const text = $('#city-input').val();
   $.ajax({
     type: "GET",
-    url: `http://api.openweathermap.org/data/2.5/weather?q=${text}&units=imperial&appid=6e2b6a17830b11b0bc53d971359df6d6`,
+    url: `http://api.openweathermap.org/data/2.5/weather?q=${text}&units=metric&appid=6e2b6a17830b11b0bc53d971359df6d6`,
     success: function(data){
       $('#weather-description').text(data.weather[0].description);
       $('#weather-humidity').text(data.main.humidity);
@@ -52,7 +52,7 @@ $('#city').on('click', function(event) {
       $('#weather-wind_speed').text(data.wind.speed);
     },
     error: function(err) {
-      console.log('error');
+      alert('Invalid City');
     }
   })
 
