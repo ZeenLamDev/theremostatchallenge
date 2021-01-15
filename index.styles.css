@@ -2,3 +2,15 @@ body {
   background-color: #363636;
   color: aliceblue;
 }
+
+.low-usage {
+  color: green;
+}
+
+.medium-usage {
+  color: orange;
+}
+
+.high-usage {
+  color: red;
+}
