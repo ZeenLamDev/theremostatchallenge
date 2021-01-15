@@ -36,22 +36,31 @@ function powersaveColour() {
   $('#temperature').attr('class', thermostat.usage());
 }
 
-var city = $('#city').val();
-console.log(city)
 
-$.ajax({
-  type: "GET",
-  url: `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=6e2b6a17830b11b0bc53d971359df6d6`,
-  success: function(data){
-    console.log(data)
-    console.log(data.main)
-    console.log(data.weather)
-    console.log(data.weather[0].description)
-    console.log(data.weather[0].icon)
-    console.log(data.weather[0].main)
-    $('#weather-description').text(data.weather[0].description);
-  }
+$('#city').on('click', function(event) {
+  event.preventDefault();
+  const text = $('#city-input').val();
+  $.ajax({
+    type: "GET",
+    url: `http://api.openweathermap.org/data/2.5/weather?q=${text}&appid=6e2b6a17830b11b0bc53d971359df6d6`,
+    success: function(data){
+      console.log(data)
+      console.log(data.main)
+      console.log(data.weather)
+      console.log(data.weather[0].description)
+      console.log(data.weather[0].icon)
+      console.log(data.weather[0].main)
+      $('#weather-description').text(data.weather[0].description);
+    },
+    error: function(err) {
+      console.log('error');
+    }
+  })
+
 })
+
+
+
 // function powersaveColour() {
 //   $('#temperature').text(thermostat.temperature);
 //   if(thermostat.usage() === "low-usage"){
