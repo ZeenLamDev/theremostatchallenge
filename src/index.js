@@ -1,3 +1,4 @@
+// jQuery
 var thermostat = new Thermostat();
 
 $('#temperature-up').on('click', function() { // event listener
@@ -8,9 +9,7 @@ $('#temperature-up').on('click', function() { // event listener
 
 
 
-
 // Vanilla Js
-
   // var thermostat = new Thermostat
   
   // document.getElementById("temperature-up").addEventListener('click', function() {
