@@ -14,3 +14,25 @@ body {
 .high-usage {
   color: red;
 }
+
+#weather-description {
+  color: yellow;
+}
+
+#weather-humidity {
+  color: yellow;
+}
+#weather-temp {
+  color: yellow;
+}
+#weather-temp_max {
+  color: yellow;
+}
+
+#weather-temp_min {
+  color: yellow;
+}
+
+#weather-wind_speed {
+  color: yellow;
+}
